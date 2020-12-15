@@ -4,7 +4,7 @@
 ![GlassMorphism_logo](Image/GlassMorphismic_logo.png)
 
 <p align="center">
-  <img alt="Swift" src="https://img.shields.io/badge/Swift-5.0-orange.svg">
+  <img alt="Swift" src="https://img.shields.io/badge/Swift-5.3-orange.svg">
 </p>
 
 GlassMorphismicは、2021年のデザインのトレンドになる可能性があると言われているGlassMorphismをSwiftUIで再現するためのライブラリです。
