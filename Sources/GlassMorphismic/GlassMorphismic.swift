@@ -5,24 +5,24 @@ import SwiftUI
 public struct GlassMorphismic {
     @Environment(\.colorScheme) var colorScheme
     
-    var cornerRadius: CGFloat = 0
-    var shadowRadius: CGFloat = 0
+    public var cornerRadius: CGFloat = 0
+    public var shadowRadius: CGFloat = 0
     
     /// Between 0..<100
-    let blurIntensity: CGFloat
+    public let blurIntensity: CGFloat
     
-    var intensity: CGFloat {
+    private var intensity: CGFloat {
         100 / max(blurIntensity, 1)
     }
     
-    var mainColor: Color {
+    private var mainColor: Color {
         colorScheme == .light ? Color.white : Color(red: 20 / 255, green: 20 / 255, blue: 20 / 255)
     }
-    var glossGradient: Gradient {
+    private var glossGradient: Gradient {
         Gradient(colors: [mainColor, mainColor.opacity(0.5), mainColor])
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { proxy in
             Blur(style: colorScheme == .light ? .systemUltraThinMaterialLight : .systemUltraThinMaterialDark)
                 .frame(width: proxy.size.width * intensity, height: proxy.size.height * intensity)
