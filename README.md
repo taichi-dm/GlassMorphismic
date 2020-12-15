@@ -2,4 +2,4 @@
 
 A description of this package.
 
-![GlassMorphism_logo](Image/GlassMorphism_logo.png)
+![GlassMorphism_logo](Image/GlassMorphismic_logo.png)
