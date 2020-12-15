@@ -8,8 +8,8 @@ final class GlassMorphismicTests: XCTestCase {
         // results.
         
         if #available(iOS 13.0, *) {
-            XCTAssertEqual(GlassMorphismic(blurIntensity: 10).blurIntensity, 10)
-            XCTAssertEqual(GlassMorphismic(cornerRadius: 10, blurIntensity: 10).cornerRadius, 10)
+            XCTAssertEqual(GlassMorphismic(blurIntensity: 10, cornerRadius: 0, shadowRadius: 0).blurIntensity, 10)
+            XCTAssertEqual(GlassMorphismic(blurIntensity: 10, cornerRadius: 0, shadowRadius: 0).cornerRadius, 10)
         }
     }
 

@@ -1,6 +1,11 @@
+//
+//
+//
+//
 
 import SwiftUI
 
+/// GlassMorphism Rectangle
 @available(iOS 13.0, *)
 public struct GlassMorphismic: View {
     @Environment(\.colorScheme) var colorScheme
@@ -56,7 +61,6 @@ public struct GlassMorphismic: View {
     }
 }
 
-
 @available(iOS 13.0, *)
 public struct Blur: UIViewRepresentable {
     var style: UIBlurEffect.Style = .systemUltraThinMaterial
@@ -68,5 +72,17 @@ public struct Blur: UIViewRepresentable {
     }
     public func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
         uiView.effect = UIBlurEffect(style: style)
+    }
+}
+
+@available(iOS 14.0, *)
+struct CatInfoLibraryContent: LibraryContentProvider {
+    @LibraryContentBuilder
+    var views: [LibraryItem] {
+        LibraryItem(
+            GlassMorphismic(blurIntensity: 5, cornerRadius: 10, shadowRadius: 10),
+            title: "GlassMorphism",
+            category: .other
+        )
     }
 }
