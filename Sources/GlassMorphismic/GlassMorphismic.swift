@@ -18,8 +18,15 @@ public struct GlassMorphismic: View {
     private var mainColor: Color {
         colorScheme == .light ? Color.white : Color(red: 20 / 255, green: 20 / 255, blue: 20 / 255)
     }
+    
     private var glossGradient: Gradient {
         Gradient(colors: [mainColor, mainColor.opacity(0.5), mainColor])
+    }
+    
+    public init(blurIntensity intensity: CGFloat = 10, cornerRadius: CGFloat = 0, shadowRadius: CGFloat = 0) {
+        self.blurIntensity = intensity
+        self.cornerRadius = cornerRadius
+        self.shadowRadius = shadowRadius
     }
     
     public var body: some View {
