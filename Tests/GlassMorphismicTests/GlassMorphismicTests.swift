@@ -6,7 +6,11 @@ final class GlassMorphismicTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(GlassMorphismic().text, "Hello, World!")
+        
+        if #available(iOS 13.0, *) {
+            XCTAssertEqual(GlassMorphismic(blurIntensity: 10).blurIntensity, 10)
+            XCTAssertEqual(GlassMorphismic(cornerRadius: 10, blurIntensity: 10).cornerRadius, 10)
+        }
     }
 
     static var allTests = [
