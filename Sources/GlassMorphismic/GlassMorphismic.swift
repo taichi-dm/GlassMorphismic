@@ -2,7 +2,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-public struct GlassMorphismic {
+public struct GlassMorphismic: View {
     @Environment(\.colorScheme) var colorScheme
     
     public var cornerRadius: CGFloat = 0
