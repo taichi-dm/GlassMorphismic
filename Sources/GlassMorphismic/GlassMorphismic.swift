@@ -12,6 +12,7 @@ public struct GlassMorphismic: View {
     
     public var cornerRadius: CGFloat = 0
     public var shadowRadius: CGFloat = 0
+    public var blurStyle: UIBlurEffect.Style = .regular
     
     /// Between 0..<100
     public let blurIntensity: CGFloat
@@ -28,15 +29,16 @@ public struct GlassMorphismic: View {
         Gradient(colors: [mainColor, mainColor.opacity(0.5), mainColor])
     }
     
-    public init(blurIntensity intensity: CGFloat = 10, cornerRadius: CGFloat = 0, shadowRadius: CGFloat = 0) {
+    public init(blurIntensity intensity: CGFloat = 10, cornerRadius: CGFloat = 0, shadowRadius: CGFloat = 0, blurStyle style: UIBlurEffect.Style = .regular) {
         self.blurIntensity = intensity
         self.cornerRadius = cornerRadius
         self.shadowRadius = shadowRadius
+        self.blurStyle = style
     }
     
     public var body: some View {
         GeometryReader { proxy in
-            Blur(style: colorScheme == .light ? .systemUltraThinMaterialLight : .systemUltraThinMaterialDark)
+            Blur(style: blurStyle)
                 .frame(width: proxy.size.width * intensity, height: proxy.size.height * intensity)
                 .scaleEffect(1 / intensity)
                 .frame(width: proxy.size.width, height: proxy.size.height)
@@ -48,13 +50,13 @@ public struct GlassMorphismic: View {
                         endPoint: colorScheme == .light ? .bottomTrailing : .topLeading
                     )
                     .mask(
-                        RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: 1)
+                        RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: 1 * ((proxy.size.width + proxy.size.height) / 320))
                             .frame(width: proxy.size.width, height: proxy.size.height)
                     )
                 )
                 .overlay(
                     RoundedRectangle(cornerRadius: cornerRadius)
-                        .stroke(mainColor, lineWidth: 10).blur(radius: 20).offset(x: 6, y: 6)
+                        .stroke(mainColor, lineWidth: 0).blur(radius: 20).offset(x: 6, y: 6)
                 ).clipShape(RoundedRectangle(cornerRadius: cornerRadius))
                 .shadow(radius: shadowRadius)
         }
@@ -67,7 +69,8 @@ public struct AdaptiveGlassMorphismicShape<T: Shape>: View {
     
     public var shape: T
     public var shadowRadius: CGFloat = 0
-    
+    public var blurStyle: UIBlurEffect.Style = .regular
+
     /// Between 0...100
     public let blurIntensity: CGFloat
     
@@ -83,15 +86,16 @@ public struct AdaptiveGlassMorphismicShape<T: Shape>: View {
         Gradient(colors: [mainColor, mainColor.opacity(0.5), mainColor])
     }
     
-    public init(blurIntensity: CGFloat = 10, shape: T, shadowRadius: CGFloat = 0) {
+    public init(blurIntensity: CGFloat = 10, shape: T, shadowRadius: CGFloat = 0, blurStyle style: UIBlurEffect.Style = .regular) {
         self.blurIntensity = blurIntensity
         self.shape = shape
         self.shadowRadius = shadowRadius
+        self.blurStyle = style
     }
     
     public var body: some View {
         GeometryReader { proxy in
-            Blur(style: .systemUltraThinMaterial)
+            Blur(style: blurStyle)
                 .frame(width: proxy.size.width * intensity, height: proxy.size.height * intensity)
                 .scaleEffect(1 / intensity)
                 .frame(width: proxy.size.width, height: proxy.size.height)
