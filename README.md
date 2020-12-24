@@ -9,8 +9,7 @@
 
 GlassMorphismicは、2021年のデザインのトレンドになる可能性があると言われているGlassMorphismをSwiftUIで再現するためのライブラリです。
 
-## Installation:
-## インストール方法：
+## インストール方法 - Installation:
 
 ### Swift Package Manager
 
